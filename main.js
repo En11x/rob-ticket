@@ -6,16 +6,17 @@ const TARGET_URL =
 
 const START_TIME = '2023-7-2 12:07:00'
 
-const USERS = ['p', 'y']
+const USERS = 1
 
 const main = async () => {
   try {
     const browser = await chromium.launch({ headless: false })
     const page = await browser.newPage()
     await page.goto(LOGIN_URL)
+    // await page.click("div:text('扫码登录')")
 
     setTimeout(async () => {
-      await buy()
+      await buy(page)
     }, 30 * 1000)
   } catch (error) {
     console.log('--------error-------', error)
@@ -54,7 +55,7 @@ const buy = async (page) => {
 
     await page.waitForSelector('.number-edit-bg')
     const add = (await page.$$('.number-edit-bg'))[1]
-    for (let index = 0; index < USERS.length - 1; index++) {
+    for (let index = 0; index < USERS - 1; index++) {
       await add.click()
     }
     const [price, total] = await Promise.all([
