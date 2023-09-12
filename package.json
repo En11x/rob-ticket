@@ -18,5 +18,8 @@
   "homepage": "https://github.com/En11x/rob-ticket#readme",
   "devDependencies": {
     "playwright": "^1.35.1"
+  },
+  "dependencies": {
+    "wd": "^1.14.0"
   }
 }
